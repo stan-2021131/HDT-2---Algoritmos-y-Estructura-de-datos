@@ -1,9 +1,9 @@
-public class Stack<T> implements IStack{
+public class Stack<T> implements IStack<T>{
     Node<T> first = new Node<>();
     Node<T> last = first;
 
     @Override
-    public void push(int value) {
+    public void push(T value) {
         last.setNext(new Node<T>(value));
         Node<T> aux = last;
         last = last.getNext();
@@ -11,32 +11,37 @@ public class Stack<T> implements IStack{
     }
 
     @Override
-    public int pop() {
-        int val = last.getValue();
+    public T pop() {
+        T val = last.getValue();
         last = last.getPrevious();
         last.setNext(null); 
         return val;
     }
     @Override
-    public int operation(char operator, int value1, int value2) {
+    public T operation(char operator, T value1, T value2) {
         int result = 0;
+        int val1 = ((Integer) value1).intValue();
+        int val2 = ((Integer) value2).intValue();
         switch (operator) {
             case '+':
-                result = value1 + value2;
+                result = val1 + val2;
                 break;
             case '-':
-                result = value1 - value2;
+                result = val1 - val2;
+                break;
+            case '*':
+                result = val1 * val2;
                 break;
             case '/':
-                result = value1 / value2;
+                result = val1 / val2;
                 break;
             case '%':
-                result = value1 % value2;
+                result = val1 % val2;
                 break;
             default:
                 throw new IllegalArgumentException("Incorrect Operator");
         }
-        return result;
+        return (T) Integer.valueOf(result);
     }
 
     public Node<T> getFirst() {
