@@ -4,7 +4,7 @@ public class Stack<T> implements IStack<T>{
 
     @Override
     public void push(T value) {
-        last.setNext(new Node<T>(value));
+        last.setNext(new Node<>(value));
         Node<T> aux = last;
         last = last.getNext();
         last.setPrevious(aux);
@@ -17,29 +17,19 @@ public class Stack<T> implements IStack<T>{
         last.setNext(null); 
         return val;
     }
+    @SuppressWarnings({"unchecked", "UnnecessaryBoxing"})
     @Override
     public T operation(char operator, T value1, T value2) {
         int result = 0;
-        int val1 = ((Integer) value1).intValue();
-        int val2 = ((Integer) value2).intValue();
+        int val1 = ((Integer) value1);
+        int val2 = ((Integer) value2);
         switch (operator) {
-            case '+':
-                result = val1 + val2;
-                break;
-            case '-':
-                result = val1 - val2;
-                break;
-            case '*':
-                result = val1 * val2;
-                break;
-            case '/':
-                result = val1 / val2;
-                break;
-            case '%':
-                result = val1 % val2;
-                break;
-            default:
-                throw new IllegalArgumentException("Incorrect Operator");
+            case '+' -> result = val1 + val2;
+            case '-' -> result = val1 - val2;
+            case '*' -> result = val1 * val2;
+            case '/' -> result = val1 / val2;
+            case '%' -> result = val1 % val2;
+            default -> throw new IllegalArgumentException("Incorrect Operator");
         }
         return (T) Integer.valueOf(result);
     }
