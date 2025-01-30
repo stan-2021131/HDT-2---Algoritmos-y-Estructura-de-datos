@@ -36,6 +36,14 @@ public class ADTCalculator {
                         int a = ((Integer) myStack.pop());
                         char operator = value.charAt(0);
 
+                        // Manejo de división por 0
+                        if ((operator == '/') && (a == 0 || b == 0 || a == 0 && b == 0)){
+                            System.out.println("Error: Division by zero in line: " + line);
+                            error = true;
+                            clear(myStack);
+                            break;
+                            }
+
                         int result = (Integer) myStack.operation(operator, a, b);
                         myStack.push(result);
                     }else{
