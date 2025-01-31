@@ -1,5 +1,5 @@
 
-import org.junit.jupiter.api.*;;
+import org.junit.jupiter.api.*;
 public class StackTest {
     Stack<Integer> stack = new Stack<>();
 
