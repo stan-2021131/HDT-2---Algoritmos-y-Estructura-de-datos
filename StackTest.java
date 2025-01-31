@@ -38,5 +38,25 @@ public class StackTest {
         Assertions.assertEquals(1, stack.operation('%', 3, 2));
     }
 
+    @Test
+    void testPopEmptyStack(){
+        Assertions.assertThrows(NullPointerException.class, () -> stack.pop());
+    }
+
+    @Test
+    void testOperationInvalidOperator(){
+        Assertions.assertThrows(IllegalArgumentException.class, () -> stack.operation('a', 2, 3));
+    }
+
+    @Test
+    void testOperationDivideByZero(){
+        Assertions.assertThrows(ArithmeticException.class, () -> stack.operation('/', 2, 0));
+    }
+
+    @Test
+    void testOperationModuloByZero(){
+        Assertions.assertThrows(ArithmeticException.class, () -> stack.operation('%', 2, 0));
+    }
+
 }
     
