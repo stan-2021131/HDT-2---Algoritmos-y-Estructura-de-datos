@@ -93,7 +93,7 @@ public class ADTCalculator {
     public  <T> int size(@SuppressWarnings("rawtypes") Stack stack){
             int count = 0;
             @SuppressWarnings("unchecked")
-            Node<T> current = stack.first.getNext();
+            Node<T> current = stack.getFirst().getNext();
             while(current != null){
                 count++;
                 current = current.getNext();

@@ -6,8 +6,8 @@
     Descripción de Stack.java: Trabajo en la logística de los métodos a emplear en la stack.
  */
 public class Stack<T> implements IStack<T>{
-    Node<T> first = new Node<>();
-    Node<T> last = first;
+    private Node<T> first = new Node<>();
+    private Node<T> last = first;
 
     @Override
     public void push(T value) {
